@@ -1,4 +1,9 @@
-class Card {
+import {api} from "../src/index"
+import {container} from "../src/index"
+import {popupImageContent} from "../src/index"
+import {popupImage} from "../src/index"
+
+export default class Card {
     constructor(cardName, cardLink, id, ownerId, likesCount, isLike) {
         this.like = this.like.bind(this);
         this.remove = this.remove.bind(this);

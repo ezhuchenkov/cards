@@ -1,7 +1,13 @@
-class Api {
+import {cardList} from "../src/index"
+import {profileName} from "../src/index"
+import {profileAbout} from "../src/index"
+import {avatar} from "../src/index"
+import {container} from "../src/index"
+
+export default class Api {
 
     getInitialCards() {
-        fetch('http://95.216.175.5/cohort1/cards', {
+        fetch('https://praktikum.tk/cohort1/cards', {
             headers: {
                 authorization: 'aaa4dd3c-2466-4899-868d-28594a970f06'
             }
@@ -28,7 +34,7 @@ class Api {
     }
 
     getProfile() {
-        fetch('http://95.216.175.5/cohort1/users/me', {
+        fetch('https://praktikum.tk/cohort1/users/me', {
             headers: {
                 authorization: 'aaa4dd3c-2466-4899-868d-28594a970f06'
             }
@@ -50,7 +56,7 @@ class Api {
     }
 
     setProfile(firstInput, secondInput) {
-        return fetch('http://95.216.175.5/cohort1/users/me', {
+        return fetch('https://praktikum.tk/cohort1/users/me', {
             method: 'PATCH',
             headers: {
                 authorization: 'aaa4dd3c-2466-4899-868d-28594a970f06',
@@ -78,7 +84,7 @@ class Api {
     }
 
     setAvatar(firstInput) {
-        return fetch('http://95.216.175.5/cohort1/users/me/avatar', {
+        return fetch('https://praktikum.tk/cohort1/users/me/avatar', {
             method: 'PATCH',
             headers: {
                 authorization: 'aaa4dd3c-2466-4899-868d-28594a970f06',
@@ -104,7 +110,7 @@ class Api {
     }
 
     postCard(firstInput, secondInput) {
-        fetch('http://95.216.175.5/cohort1/cards', {
+        fetch('https://praktikum.tk/cohort1/cards', {
             method: 'POST',
             headers: {
                 authorization: 'aaa4dd3c-2466-4899-868d-28594a970f06',
@@ -133,7 +139,7 @@ class Api {
 
     removeCard(event) {
 
-        return fetch(`http://95.216.175.5/cohort1/cards/${event.currentTarget.closest('.place-card').id}`, {
+        return fetch(`https://praktikum.tk/cohort1/cards/${event.currentTarget.closest('.place-card').id}`, {
             method: 'DELETE',
             headers: {
                 authorization: 'aaa4dd3c-2466-4899-868d-28594a970f06',
@@ -154,7 +160,7 @@ class Api {
 
     like(event) {
 
-        return fetch(`http://95.216.175.5/cohort1/cards/like/${event.currentTarget.closest('.place-card').id}`, {
+        return fetch(`https://praktikum.tk/cohort1/cards/like/${event.currentTarget.closest('.place-card').id}`, {
             method: 'PUT',
             headers: {
                 authorization: 'aaa4dd3c-2466-4899-868d-28594a970f06',
@@ -179,7 +185,7 @@ class Api {
 
     unlike(event) {
 
-        return fetch(`http://95.216.175.5/cohort1/cards/like/${event.currentTarget.closest('.place-card').id}`, {
+        return fetch(`https://praktikum.tk/cohort1/cards/like/${event.currentTarget.closest('.place-card').id}`, {
             method: 'DELETE',
             headers: {
                 authorization: 'aaa4dd3c-2466-4899-868d-28594a970f06',

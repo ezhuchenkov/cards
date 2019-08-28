@@ -1,4 +1,7 @@
-class CardList {
+import Card from "./Card";
+import {api} from "../src/index"
+
+export default class CardList {
     constructor(container) {
         this.container = container;
         this.cards = [];

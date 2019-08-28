@@ -20,12 +20,44 @@ module.exports = {
             {
                 test: /\.css$/,
                 use:  [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader'] 
-            }
+            },
+            {
+                test: /\.(gif|png|jpe?g|svg)$/i,
+                use: [
+                    'file-loader?name=./images/[name].[ext]',
+                  {
+                    loader: 'image-webpack-loader',
+                    options: {
+                      mozjpeg: {
+                        progressive: true,
+                        quality: 65
+                      },
+                      optipng: {
+                        enabled: false,
+                      },
+                      pngquant: {
+                        quality: '65-90',
+                        speed: 4
+                      },
+                      gifsicle: {
+                        interlaced: false,
+                      },
+                      webp: {
+                        quality: 75
+                      }
+                    }
+                  },
+                ],
+              },
+           {
+            test: /\.(eot|ttf|woff|woff2)$/,
+            loader: 'file-loader?name=./vendor/[name].[ext]'
+           }
         ]
     },
     plugins: [
         new MiniCssExtractPlugin({
-            filename: 'style.[contenthash].css',
+            filename: 'style.css',
         }),
         new HtmlWebpackPlugin({
             inject: false,

@@ -1,4 +1,6 @@
-class Popup {
+import {api} from "../src/index"
+
+export default class Popup {
     constructor(popupID) {
         this.open = this.open.bind(this);
         this.close = this.close.bind(this);

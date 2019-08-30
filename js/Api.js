@@ -5,8 +5,22 @@ import {avatar} from "../src/index"
 import {container} from "../src/index"
 
 export default class Api {
+   buildChecker(){
+    let url;
+
+    if (NODE_ENV === 'production') {
+        url = 'https://95.216.175.5/cohort1';
+    } else {
+        url = 'http://95.216.175.5/cohort1';
+    }
+    return url;
+   }
+
+    
 
     getInitialCards() {
+        buildChecker();
+        console.log(url)
         fetch('https://praktikum.tk/cohort1/cards', {
             headers: {
                 authorization: 'aaa4dd3c-2466-4899-868d-28594a970f06'

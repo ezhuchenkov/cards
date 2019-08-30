@@ -1,4 +1,4 @@
-import {api} from "../src/index"
+import {api} from "../../src/index"
 
 export default class Popup {
     constructor(popupID) {

@@ -1,7 +1,9 @@
+import '../images/logo.svg'
+import '../images/close.svg'
 import "./style.css";
 import Api from "../js/Api";
 import CardList from "../js/CardList";
-import Popup from "../js/Popup";
+import Popup from "../blocks/popup/Popup";
 
 
 

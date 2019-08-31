@@ -7,7 +7,8 @@ export default class CardList {
         this.cards = [];
         this.render();
     }
-
+    // В комментариях надо описать какие параметры которые принимает функция и за что они отвечают
+    // особенно "id"
     addCard(cardName, cardLink,id,ownerId,likesCount,isLike) {
         const { cardElement } = new Card(cardName, cardLink,id,ownerId,likesCount,isLike);
         this.cards.push(cardElement);

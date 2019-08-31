@@ -2,7 +2,7 @@ import {api} from "../src/index"
 import {container} from "../src/index"
 import {popupImageContent} from "../src/index"
 import {popupImage} from "../src/index"
-
+// Рекомендую описывать что делает класс, это поможет разобраться в коде в будущем
 export default class Card {
     constructor(cardName, cardLink, id, ownerId, likesCount, isLike) {
         this.like = this.like.bind(this);
@@ -53,6 +53,7 @@ export default class Card {
         this.cardItem.querySelector('.place-card__delete-icon').removeEventListener('click', this.remove);
         this.cardItem.querySelector('.place-card__image').removeEventListener('click', this.open);
     }
+    // что создаёт этот метод? Название метода ни о чём мне не говорит, я рекомендую добавить комментарий, для понимая
     create(cardNameValue, cardLinkValue, id, ownerId, likesCount, isLike) {
         const cardItem = document.createElement('div');
         const cardImage = document.createElement('div');
@@ -71,6 +72,7 @@ export default class Card {
         cardImage.classList.add('place-card__image');
         cardImage.style = 'background-image: url(' + cardLinkValue + ')';
         cardItem.appendChild(cardImage);
+        // 'd222ddcaf61e8c17e842a42c' надо вынести отдельно в константу
         if (ownerId === 'd222ddcaf61e8c17e842a42c') {
             deleteButton.classList.add('place-card__delete-icon');
             cardImage.appendChild(deleteButton);
@@ -101,7 +103,7 @@ export default class Card {
         */
         return cardItem;
     }
-
+    // За что отвечает этот метод, нет понимания. 
     open(event) {
         if (event.target.classList.contains('place-card__image')) {
             popupImageContent.classList.add('popup_is-opened');

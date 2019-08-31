@@ -1,16 +1,17 @@
-import {cardList} from "../src/index"
-import {profileName} from "../src/index"
-import {profileAbout} from "../src/index"
-import {avatar} from "../src/index"
-import {container} from "../src/index"
+import { cardList } from "../src/index"
+import { profileName } from "../src/index"
+import { profileAbout } from "../src/index"
+import { avatar } from "../src/index"
+import { container } from "../src/index"
+import { url, authorization } from "./config"
 
 export default class Api {
-  
+
 
     getInitialCards() {
-        fetch('https://praktikum.tk/cohort1/cards', {
+        fetch(`${url}/cards`, {
             headers: {
-                authorization: 'aaa4dd3c-2466-4899-868d-28594a970f06'
+                authorization: authorization
             }
         })
             .then(res => {
@@ -23,7 +24,7 @@ export default class Api {
                 const check = function (element) {
                     return element._id === 'd222ddcaf61e8c17e842a42c';
                 };
-                for (let i = 0; i < result.length; i++) { 
+                for (let i = 0; i < result.length; i++) {
                     const isLike = result[i].likes.some(check);
                     cardList.addCard(result[i].name, result[i].link, result[i]._id,
                         result[i].owner._id, result[i].likes.length, isLike)
@@ -35,9 +36,9 @@ export default class Api {
     }
 
     getProfile() {
-        fetch('https://praktikum.tk/cohort1/users/me', {
+        fetch(`${url}/users/me`, {
             headers: {
-                authorization: 'aaa4dd3c-2466-4899-868d-28594a970f06'
+                authorization: authorization
             }
         })
             .then(res => {
@@ -57,10 +58,10 @@ export default class Api {
     }
 
     setProfile(firstInput, secondInput) {
-        return fetch('https://praktikum.tk/cohort1/users/me', {
+        return fetch(`${url}/users/me`, {
             method: 'PATCH',
             headers: {
-                authorization: 'aaa4dd3c-2466-4899-868d-28594a970f06',
+                authorization: authorization,
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
@@ -85,10 +86,10 @@ export default class Api {
     }
 
     setAvatar(firstInput) {
-        return fetch('https://praktikum.tk/cohort1/users/me/avatar', {
+        return fetch(`${url}/users/me/avatar`, {
             method: 'PATCH',
             headers: {
-                authorization: 'aaa4dd3c-2466-4899-868d-28594a970f06',
+                authorization: authorization,
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
@@ -111,10 +112,10 @@ export default class Api {
     }
 
     postCard(firstInput, secondInput) {
-        fetch('https://praktikum.tk/cohort1/cards', {
+        fetch(`${url}/cards`, {
             method: 'POST',
             headers: {
-                authorization: 'aaa4dd3c-2466-4899-868d-28594a970f06',
+                authorization: authorization,
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
@@ -140,10 +141,10 @@ export default class Api {
 
     removeCard(event) {
 
-        return fetch(`https://praktikum.tk/cohort1/cards/${event.currentTarget.closest('.place-card').id}`, {
+        return fetch(`${url}/cards/${event.currentTarget.closest('.place-card').id}`, {
             method: 'DELETE',
             headers: {
-                authorization: 'aaa4dd3c-2466-4899-868d-28594a970f06',
+                authorization: authorization,
                 'Content-Type': 'application/json'
             }
         })
@@ -161,10 +162,10 @@ export default class Api {
 
     like(event) {
 
-        return fetch(`https://praktikum.tk/cohort1/cards/like/${event.currentTarget.closest('.place-card').id}`, {
+        return fetch(`${url}/cards/like/${event.currentTarget.closest('.place-card').id}`, {
             method: 'PUT',
             headers: {
-                authorization: 'aaa4dd3c-2466-4899-868d-28594a970f06',
+                authorization: authorization,
                 'Content-Type': 'application/json'
             }
         })
@@ -186,10 +187,10 @@ export default class Api {
 
     unlike(event) {
 
-        return fetch(`https://praktikum.tk/cohort1/cards/like/${event.currentTarget.closest('.place-card').id}`, {
+        return fetch(`${url}/cards/like/${event.currentTarget.closest('.place-card').id}`, {
             method: 'DELETE',
             headers: {
-                authorization: 'aaa4dd3c-2466-4899-868d-28594a970f06',
+                authorization: authorization,
                 'Content-Type': 'application/json'
             }
         })
@@ -212,20 +213,30 @@ export default class Api {
 
 /**
  * Хорошо оршанизован код
- * 
+ *
  * Необходимо вынести адресса  praktikum.tk в отдельную переменную. В больших проектах таких адресов может быть тысяча и лучше их менять в одном месте
+  ИСПРАВЛЕНО, спасибо. Сделана проверка на хост.
+
  * Необходимо доработать README.md Нет описания того как необходимо собрать проект, какие библиотеки используеются, какие действия необходимы
- * Поэтаптно расписать каждое действие по пунктам(Не для чего а как сделать). 
+ ИСПРАВЛЕНО, спасибо
+
+ * Поэтаптно расписать каждое действие по пунктам(Не для чего а как сделать).
+ИСПРАВЛЕНО, спасибо
+
  * Большие проекты на серверах поддерживают люди которые не знают что такое babel, webpack и так далее
+ ИСПРАВЛЕНО, спасибо
+
  * Необходимо добавить комментарии, где это необходимо. Представьте, что вы вернётесь к вашему проекту через 5 лет.
+ ИСПРАВЛЕНО, спасибо
+
  * Ключи авторизации необходимо вынести в отдельный конфиг
- * 
- * 
+ * ИСПРАВЛЕНО, спасибо
+ *
  * Рекомендую почитать кодстайл https://learn.javascript.ru/coding-style
- * В ветке master ничего не программируют, обычно делают отдельную ветку и её вливают в мастер. 
+ * В ветке master ничего не программируют, обычно делают отдельную ветку и её вливают в мастер.
  * У вас я заметил несколько коммитов в мастере.
- * 
- * 
+ *
+ *
  */
 
 

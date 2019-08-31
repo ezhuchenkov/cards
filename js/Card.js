@@ -1,18 +1,35 @@
-import {api} from "../src/index"
-import {container} from "../src/index"
-import {popupImageContent} from "../src/index"
-import {popupImage} from "../src/index"
+import { api } from "../src/index"
+import { container } from "../src/index"
+import { popupImageContent } from "../src/index"
+import { popupImage } from "../src/index"
 // Рекомендую описывать что делает класс, это поможет разобраться в коде в будущем
+// ИСПРАВЛЕНО, спасибо
+
+
+/* класс Card описывает поведение объекта карточки. Имеет входные параметры, получаемые от сервера чрез класс Api:
+cardName - имя карточки 
+cardLink - ссылка на картинку карточки
+id - идентификационный номер карточки
+ownerId - идентификационный номер владельца карточки
+likesCount - количество лайков на карточке
+isLike - был ли поставлен лайк на карточке
+
+Имеет методы:
+like - проставление/удаление лайков на карточке
+remove - удаление карточки
+removeListeners - сервисный метод. Удаление слушателей событий псоле удаления элемента карточки
+create - создание объекта карточки, входны параметры идентичны параметрам конструктора класса
+open - метод, описывающий поведение элемента при клике на изображение карточки. (изображение открывается в большем размере)
+описание методов дублировано перед каждым методом
+*/
 export default class Card {
     constructor(cardName, cardLink, id, ownerId, likesCount, isLike) {
         this.like = this.like.bind(this);
         this.remove = this.remove.bind(this);
         this.open = this.open.bind(this);
         this.cardItem = this.create(cardName, cardLink, id, ownerId, likesCount, isLike);
-
     }
-
-
+    //like - проставление/удаление лайков на карточке
     like(event) {
         if (event.target.classList.contains('place-card__like-icon_liked')) {
             api.unlike(event)
@@ -20,9 +37,7 @@ export default class Card {
             api.like(event)
         }
     }
-
-
-
+    //remove - удаление карточки
     remove(event) {
         if (event.target.classList.contains('place-card__delete-icon')) {
             if (confirm("Вы уверены, что хотите удалить эту карточку?")) {
@@ -48,12 +63,14 @@ export default class Card {
             }
         }
     }
+    //removeListeners - сервисный метод. Удаление слушателей событий псоле удаления элемента карточки
     removeListeners() {
         this.cardItem.querySelector('.place-card__like-icon').removeEventListener('click', this.like);
         this.cardItem.querySelector('.place-card__delete-icon').removeEventListener('click', this.remove);
         this.cardItem.querySelector('.place-card__image').removeEventListener('click', this.open);
     }
     // что создаёт этот метод? Название метода ни о чём мне не говорит, я рекомендую добавить комментарий, для понимая
+    //create - создание объекта карточки, входны параметры идентичны параметрам конструктора класса
     create(cardNameValue, cardLinkValue, id, ownerId, likesCount, isLike) {
         const cardItem = document.createElement('div');
         const cardImage = document.createElement('div');
@@ -104,6 +121,7 @@ export default class Card {
         return cardItem;
     }
     // За что отвечает этот метод, нет понимания. 
+    //open - метод, описывающий поведение элемента при клике на изображение карточки. (изображение открывается в большем размере)
     open(event) {
         if (event.target.classList.contains('place-card__image')) {
             popupImageContent.classList.add('popup_is-opened');

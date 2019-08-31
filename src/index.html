@@ -47,7 +47,8 @@
         <img src="<%=require('../images/close.svg')%>" alt='' class='popup__close'>
         <h3 class='popup__title'>Новое место</h3>
         <form class='popup__form' name='new' novalidate>
-          <input type='text' name='name' class='popup__input popup__input_type_name' placeholder='Название' minlength='2' maxlength='30'>
+          <input type='text' name='name' class='popup__input popup__input_type_name' placeholder='Название'
+            minlength='2' maxlength='30'>
           <span class='popup__error' id='error-name' aria-live='polite'></span>
           <input type='url' name='link' class='popup__input popup__input_type_link-url'
             placeholder='Ссылка на картинку'>
@@ -61,9 +62,11 @@
         <img src='./images/close.svg' alt='' class='popup__close'>
         <h3 class='popup__title'>Редактировать профиль</h3>
         <form class='popup__form' name='edit' novalidate>
-          <input type='text' name='author' class='popup__input popup__input_type_name' placeholder='Имя' minlength='2' maxlength='30'>
+          <input type='text' name='author' class='popup__input popup__input_type_name' placeholder='Имя' minlength='2'
+            maxlength='30'>
           <span class='popup__error' id='error-author' aria-live='polite'></span>
-          <input type='text' name='about' class='popup__input popup__input_type_about' placeholder='О себе'  minlength='2' maxlength='30'>
+          <input type='text' name='about' class='popup__input popup__input_type_about' placeholder='О себе'
+            minlength='2' maxlength='30'>
           <span class='popup__error' id='error-about' aria-live='polite'></span>
           <button class='button popup__button popup__button_disabled' disabled>Сохранить</button>
         </form>

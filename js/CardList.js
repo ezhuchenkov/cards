@@ -1,5 +1,5 @@
 import Card from "./Card";
-import {api} from "../src/index"
+import { api } from "../src/index"
 
 export default class CardList {
     constructor(container) {
@@ -9,8 +9,14 @@ export default class CardList {
     }
     // В комментариях надо описать какие параметры которые принимает функция и за что они отвечают
     // особенно "id"
-    addCard(cardName, cardLink,id,ownerId,likesCount,isLike) {
-        const { cardElement } = new Card(cardName, cardLink,id,ownerId,likesCount,isLike);
+    /*Параметры:cardName - имя карточки 
+    cardLink - ссылка на картинку карточки
+    id - идентификационный номер карточки
+    ownerId - идентификационный номер владельца карточки
+    likesCount - количество лайков на карточке
+    isLike - был ли поставлен лайк на карточке */
+    addCard(cardName, cardLink, id, ownerId, likesCount, isLike) {
+        const { cardElement } = new Card(cardName, cardLink, id, ownerId, likesCount, isLike);
         this.cards.push(cardElement);
     }
     render() {

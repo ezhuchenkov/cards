@@ -15,6 +15,8 @@ export default class CardList {
     ownerId - идентификационный номер владельца карточки
     likesCount - количество лайков на карточке
     isLike - был ли поставлен лайк на карточке */
+
+    // Почитайте внимательно, это рекомендация https://ru.wikipedia.org/wiki/JSDoc
     addCard(cardName, cardLink, id, ownerId, likesCount, isLike) {
         const { cardElement } = new Card(cardName, cardLink, id, ownerId, likesCount, isLike);
         this.cards.push(cardElement);
